@@ -1,0 +1,27 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ybae247365/costview.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ybae247365/costview/issues"
+  },
+  "homepage": "https://github.com/ybae247365/costview#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.102.1",
+    "axios": "^1.15.0",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.4.1"
+  }
+}
