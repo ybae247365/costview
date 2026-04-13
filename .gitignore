@@ -1,6 +1,5 @@
 __pycache__/
 *.pyc
-venv/.env 
-node_modules/
 .env
-out.log
+venv/.env
+*.zip
