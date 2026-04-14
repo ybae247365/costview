@@ -1,0 +1,30 @@
+name: Daily ECOS Monthly Sync
+
+on:
+  schedule:
+    # 통계청은 매월 ~15일경 수입물가를 발표하므로, 발표 즉시 수집하기 위해 매일 실행합니다.
+    # Forward Fill 로직이 발표 전까지 직전값을 유지해줍니다.
+    - cron: '0 0 * * *'  # 한국 시간 오전 9시 (UTC 00:00)
+  workflow_dispatch:      # 수동 실행 버튼
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ECOS Monthly Fetch (원유·천연가스 수입물가지수)
+        run: node src/data_mining/ECOS/fetch-ecos-monthly.js
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}

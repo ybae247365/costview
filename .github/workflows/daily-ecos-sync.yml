@@ -1,0 +1,28 @@
+name: Daily ECOS Sync
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 한국 시간 오전 9시 (UTC 00:00)
+  workflow_dispatch:      # 수동 실행 버튼
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ECOS Daily Fetch (환율, 금리)
+        run: node src/data_mining/ECOS/fetch-ecos-daily.js
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
