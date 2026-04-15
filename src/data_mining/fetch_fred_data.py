@@ -30,11 +30,27 @@ DAILY_SERIES = {
     "fred_wti": "DCOILWTICO",
     "fred_brent": "DCOILBRENTE",
     "fred_usd_index": "DTWEXBGS",  
-    "fred_treasury_10y": "DGS10"
+    "fred_treasury_10y": "DGS10",
+    "fred_treasury_2y": "DGS2",
+    "fred_natural_gas": "DHHNGSP",
+    "fred_heating_oil": "DHOILNYH"
 }
 
 MONTHLY_SERIES = {
-    "fred_gepu": "GEPUCURRENT"
+    "fred_gepu": "GEPUCURRENT",
+    "fred_cpi": "CPIAUCSL",
+    "fred_pce": "PCEPI",
+    "fred_unrate": "UNRATE",
+    "fred_gdp": "GDP",        # 원래 분기 데이터이나 DB 편의상 Monthly 테이블에 저장
+    "fred_indpro": "INDPRO",
+    "fred_fedfunds": "FEDFUNDS",
+    "fred_csushpisa": "CSUSHPISA",
+    "fred_pcedg": "PCEDG",
+    "fred_wheat": "PWHEAMTUSDM",
+    "fred_corn": "PMAIZMTUSDM",
+    "fred_soybean": "PSOYBUSDQ",
+    "fred_ppi": "PPIACO",
+    "fred_bdi": "BDI"         # BDI는 FRED 공식지원X일수 있으나 에러 스킵처리됨
 }
 
 def fetch_latest_fred_value(series_id: str) -> dict:
