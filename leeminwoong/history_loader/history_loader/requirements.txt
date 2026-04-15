@@ -12,3 +12,5 @@ python-dotenv>=1.0.1
 
 # Supabase(PostgREST) 모드 시 — common.supabase_client, supabase_store
 supabase>=2.3.0,<3
+langchain-core>=0.3,<0.4
+langgraph>=0.2,<0.4
